@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+CLI_ARGS=()
+ELM_ARGS=()
+POSITIONAL_ARGS=()
+
+while [[ $# -gt 0 ]]; do
+	case $1 in
+	-o | --optimize)
+		ELM_ARGS+=("--optimize")
+		shift
+		;;
+	-s | --sample)
+		CLI_ARGS+=("--sample")
+		shift
+		;;
+	-*)
+		echo >&2 "Unknown option $1"
+		exit 1
+		;;
+	*)
+		POSITIONAL_ARGS+=("$1")
+		shift
+		;;
+	esac
+done
+
+set -- "${POSITIONAL_ARGS[@]}"
+
+if elm make src/Main.elm --output=aoc.js "${ELM_ARGS[@]}" 1>/dev/null; then
+	[[ "$1" ]] && node cli.mjs "${CLI_ARGS[@]}" "${@}"
+fi
