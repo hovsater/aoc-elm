@@ -3,6 +3,7 @@ module Aoc exposing (Day, Year, dayToInt, intToDay, intToYear, solve, yearToInt)
 import Aoc.Problem exposing (Answer(..), Input, Solution)
 import Year2022.Day01
 import Year2022.Day02
+import Year2022.Day03
 
 
 type Year
@@ -265,6 +266,9 @@ solve year day input =
 
         ( Year2022, Day02 ) ->
             Year2022.Day02.solve input
+
+        ( Year2022, Day03 ) ->
+            Year2022.Day03.solve input
 
         _ ->
             ( StringAnswer "Not implemented", StringAnswer "Not implemented" )
