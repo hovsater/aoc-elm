@@ -6,6 +6,7 @@ import Year2022.Day02
 import Year2022.Day03
 import Year2022.Day04
 import Year2022.Day05
+import Year2022.Day06
 
 
 type Year
@@ -277,6 +278,9 @@ solve year day input =
 
         ( Year2022, Day05 ) ->
             Year2022.Day05.solve input
+
+        ( Year2022, Day06 ) ->
+            Year2022.Day06.solve input
 
         _ ->
             ( StringAnswer "Not implemented", StringAnswer "Not implemented" )
