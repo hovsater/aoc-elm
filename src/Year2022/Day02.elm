@@ -78,15 +78,14 @@ scoreRound ( a, b ) =
         6 + shapeScore b
 
 
-partOne : Input -> Answer
+partOne : Input -> Int
 partOne input =
     input
         |> parseRounds
         |> List.foldl (\round sum -> sum + scoreRound round) 0
-        |> IntAnswer
 
 
-partTwo : Input -> Answer
+partTwo : Input -> Int
 partTwo input =
     let
         transformRound : Round -> Round
@@ -104,9 +103,10 @@ partTwo input =
     input
         |> parseRounds
         |> List.foldl (\round sum -> sum + (scoreRound <| transformRound round)) 0
-        |> IntAnswer
 
 
 solve : Input -> Solution
 solve input =
-    ( partOne input, partTwo input )
+    ( partOne input |> IntAnswer
+    , partTwo input |> IntAnswer
+    )

@@ -53,24 +53,24 @@ parseInput input =
     run parseRangePairs input |> Result.withDefault []
 
 
-partOne : Input -> Answer
+partOne : Input -> Int
 partOne input =
     input
         |> parseInput
         |> List.filter rangePairContainment
         |> List.length
-        |> IntAnswer
 
 
-partTwo : Input -> Answer
+partTwo : Input -> Int
 partTwo input =
     input
         |> parseInput
         |> List.filter rangePairOverlap
         |> List.length
-        |> IntAnswer
 
 
 solve : Input -> Solution
 solve input =
-    ( partOne input, partTwo input )
+    ( partOne input |> IntAnswer
+    , partTwo input |> IntAnswer
+    )

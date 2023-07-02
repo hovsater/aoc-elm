@@ -53,7 +53,7 @@ parseInput input =
         |> List.map String.toList
 
 
-partOne : Input -> Answer
+partOne : Input -> Int
 partOne input =
     let
         findCommonItem : ( Compartment, Compartment ) -> Maybe Item
@@ -65,10 +65,9 @@ partOne input =
         |> List.filterMap (toCompartments >> findCommonItem)
         |> List.map itemPriority
         |> List.sum
-        |> IntAnswer
 
 
-partTwo : Input -> Answer
+partTwo : Input -> Int
 partTwo input =
     let
         findCommonItem : List Rucksack -> Maybe Item
@@ -86,9 +85,10 @@ partTwo input =
         |> List.filterMap findCommonItem
         |> List.map itemPriority
         |> List.sum
-        |> IntAnswer
 
 
 solve : Input -> Solution
 solve input =
-    ( partOne input, partTwo input )
+    ( partOne input |> IntAnswer
+    , partTwo input |> IntAnswer
+    )

@@ -118,7 +118,7 @@ moveMany { amount, from, to } stacks =
         |> Array.set to (List.concat [ List.take amount fromCrates, toCrates ])
 
 
-partOne : Input -> Answer
+partOne : Input -> String
 partOne input =
     let
         ( stacks, moves ) =
@@ -128,10 +128,9 @@ partOne input =
         |> Array.toList
         |> List.filterMap List.head
         |> String.join ""
-        |> StringAnswer
 
 
-partTwo : Input -> Answer
+partTwo : Input -> String
 partTwo input =
     let
         ( stacks, moves ) =
@@ -141,9 +140,10 @@ partTwo input =
         |> Array.toList
         |> List.filterMap List.head
         |> String.join ""
-        |> StringAnswer
 
 
 solve : Input -> Solution
 solve input =
-    ( partOne input, partTwo input )
+    ( partOne input |> StringAnswer
+    , partTwo input |> StringAnswer
+    )

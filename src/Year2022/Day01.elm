@@ -22,16 +22,23 @@ elfCalories input =
         |> List.map (List.sum << List.filterMap String.toInt << String.split "\n")
 
 
-partOne : Input -> Answer
+partOne : Input -> Int
 partOne input =
-    IntAnswer (List.maximum (elfCalories input) |> Maybe.withDefault 0)
+    elfCalories input
+        |> List.maximum
+        |> Maybe.withDefault 0
 
 
-partTwo : Input -> Answer
+partTwo : Input -> Int
 partTwo input =
-    IntAnswer (List.sum <| List.take 3 <| List.sortWith reversedComparsion (elfCalories input))
+    elfCalories input
+        |> List.sortWith reversedComparsion
+        |> List.take 3
+        |> List.sum
 
 
 solve : Input -> Solution
 solve input =
-    ( partOne input, partTwo input )
+    ( partOne input |> IntAnswer
+    , partTwo input |> IntAnswer
+    )

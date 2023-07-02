@@ -16,22 +16,22 @@ findStartOfPacketMarker offset gap signal =
         findStartOfPacketMarker (offset + 1) gap signal
 
 
-partOne : Input -> Answer
+partOne : Input -> Int
 partOne input =
     input
         |> findStartOfPacketMarker 0 4
         |> Maybe.withDefault 0
-        |> IntAnswer
 
 
-partTwo : Input -> Answer
+partTwo : Input -> Int
 partTwo input =
     input
         |> findStartOfPacketMarker 0 14
         |> Maybe.withDefault 0
-        |> IntAnswer
 
 
 solve : Input -> Solution
 solve input =
-    ( partOne input, partTwo input )
+    ( partOne input |> IntAnswer
+    , partTwo input |> IntAnswer
+    )
