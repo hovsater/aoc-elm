@@ -28,5 +28,5 @@ done
 set -- "${POSITIONAL_ARGS[@]}"
 
 if elm make src/Main.elm --output=aoc.js "${ELM_ARGS[@]}" 1>/dev/null; then
-	[[ "$1" ]] && node cli.mjs "${CLI_ARGS[@]}" "${@}"
+	[[ "$1" ]] && clear && node cli.mjs "${CLI_ARGS[@]}" "${@}"
 fi
