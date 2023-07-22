@@ -1,6 +1,7 @@
 module Aoc exposing (Day, Year, dayToInt, intToDay, intToYear, solve, yearToInt)
 
 import Aoc.Problem exposing (Answer(..), Input, Solution)
+import Year2018.Day01
 import Year2022.Day01
 import Year2022.Day02
 import Year2022.Day03
@@ -264,6 +265,9 @@ intToDay int =
 solve : Year -> Day -> Input -> Solution
 solve year day input =
     case ( year, day ) of
+        ( Year2018, Day01 ) ->
+            Year2018.Day01.solve input
+
         ( Year2022, Day01 ) ->
             Year2022.Day01.solve input
 
